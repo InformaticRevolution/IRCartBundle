@@ -12,6 +12,7 @@
 namespace IR\Bundle\CartBundle\Event;
 
 use Symfony\Component\EventDispatcher\Event;
+use Symfony\Component\HttpFoundation\Request;
 use IR\Bundle\CartBundle\Model\CartItemInterface;
 
 /**
@@ -26,24 +27,40 @@ class CartItemEvent extends Event
      */              
     protected $item; 
     
-    
+    /**
+     * @var Request
+     */
+    protected $request;
+
+
     /**
      * Constructor.
      * 
      * @param CartItemInterface $item
      */            
-    public function __construct(CartItemInterface $item)
+    public function __construct(CartItemInterface $item, Request $request)
     {
         $this->item = $item;
+        $this->request = $request;
     }
 
     /**
-     * Returns the item.
+     * Returns the cart item.
      * 
      * @return CartItemInterface
      */
     public function getCartItem()
     {
         return $this->item;
-    }  
+    } 
+    
+    /**
+     * Returns the request.
+     * 
+     * @return Request
+     */
+    public function getRequest()
+    {
+        return $this->request;
+    }    
 }
