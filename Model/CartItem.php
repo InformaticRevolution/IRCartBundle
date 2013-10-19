@@ -19,6 +19,11 @@ namespace IR\Bundle\CartBundle\Model;
 abstract class CartItem implements CartItemInterface
 {
     /**
+     * @var mixed
+     */
+    protected $id;
+    
+    /**
      * @var CartInterface
      */
     protected $cart;
