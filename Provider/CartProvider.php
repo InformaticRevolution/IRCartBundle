@@ -59,8 +59,8 @@ class CartProvider implements CartProviderInterface
             return $this->cart;
         }
                 
-        if ($cart = $this->storage->getCart()) {
-            return $this->cart = $cart;
+        if ($cartId = $this->storage->getCart()) {
+            return $this->cart = $this->cartManager->findCartBy(array('id' => $cartId));
         }
 
         $cart = $this->cartManager->createCart();
@@ -75,6 +75,6 @@ class CartProvider implements CartProviderInterface
     public function setCart(CartInterface $cart)
     {
         $this->cart = $cart;
-        $this->storage->setCart($cart);
+        $this->storage->setCart($cart->getId());
     }
 }

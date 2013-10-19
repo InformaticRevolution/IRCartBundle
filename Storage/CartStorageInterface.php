@@ -32,5 +32,5 @@ interface CartStorageInterface
      * 
      * @param CartInterface $cart
      */
-    public function setCart(CartInterface $cart);
+    public function setCart($cart);
 }

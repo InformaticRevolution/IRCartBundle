@@ -55,7 +55,7 @@ class SessionCartStorage implements CartStorageInterface
     /**
      * {@inheritdoc}
      */    
-    public function setCart(CartInterface $cart) 
+    public function setCart($cart) 
     {
         $this->session->set($this->key, $cart);
     }    
