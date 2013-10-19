@@ -11,6 +11,7 @@
 
 namespace IR\Bundle\CartBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\DependencyInjection\ContainerAware;
 
@@ -27,14 +28,14 @@ class CartItemController extends ContainerAware
     /**
      * Add an item to the current cart.
      */
-    public function addAction()
+    public function addAction(Request $request)
     {
         /* @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
         $dispatcher = $this->container->get('event_dispatcher');  
         
         $item = $this->container->get('ir_cart.manager.cart_item')->createCartItem();
         
-        $dispatcher->dispatch(IRCartEvents::CART_ITEM_ADD_INITIALIZE, new CartItemEvent($item));
+        $dispatcher->dispatch(IRCartEvents::CART_ITEM_ADD_INITIALIZE, new CartItemEvent($item, $request));
         
         $cart = $this->container->get('ir_cart.provider.cart')->getCart(); 
         
@@ -42,7 +43,7 @@ class CartItemController extends ContainerAware
         $this->container->get('ir_cart.manager.cart')->updateCart($cart);
         $this->container->get('ir_cart.provider.cart')->setCart($cart);
         
-        $dispatcher->dispatch(IRCartEvents::CART_ITEM_ADD_COMPLETED, new CartItemEvent($item));           
+        $dispatcher->dispatch(IRCartEvents::CART_ITEM_ADD_COMPLETED, new CartItemEvent($item, $request));           
         
         return new RedirectResponse($this->container->get('router')->generate('ir_cart_checkout'));
     }  
@@ -50,7 +51,7 @@ class CartItemController extends ContainerAware
     /**
      * Remove an item from the current cart.
      */
-    public function removeAction($id)
+    public function removeAction(Request $request, $id)
     {
         $item = $this->container->get('ir_cart.manager.cart_item')->findCartItemBy(array('id' => $id));
         $cart = $this->container->get('ir_cart.provider.cart')->getCart(); 
@@ -64,7 +65,7 @@ class CartItemController extends ContainerAware
         
         /* @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
         $dispatcher = $this->container->get('event_dispatcher');                      
-        $dispatcher->dispatch(IRCartEvents::CART_ITEM_REMOVE_COMPLETED, new CartItemEvent($item));        
+        $dispatcher->dispatch(IRCartEvents::CART_ITEM_REMOVE_COMPLETED, new CartItemEvent($item, $request));        
         
         return new RedirectResponse($this->container->get('router')->generate('ir_cart_checkout'));
     }  
