@@ -8,15 +8,15 @@
         <default key="_controller">IRCartBundle:Cart:checkout</default>
     </route>
     
-    <route id="ir_cart_clear" pattern="/clear" methods="GET">
+    <route id="ir_cart_clear" pattern="/clear">
         <default key="_controller">IRCartBundle:Cart:clear</default>
     </route>      
     
-    <route id="ir_cart_item_add" pattern="/add" methods="GET">
+    <route id="ir_cart_item_add" pattern="/add">
         <default key="_controller">IRCartBundle:CartItem:add</default>
     </route>   
     
-    <route id="ir_cart_item_remove" pattern="/{id}/remove" methods="GET">
+    <route id="ir_cart_item_remove" pattern="/{id}/remove">
         <default key="_controller">IRCartBundle:CartItem:remove</default>
     </route>                               
 </routes>
