@@ -22,6 +22,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Cart implements CartInterface
 {
     /**
+     * @var mixed
+     */
+    protected $id;
+    
+    /**
      * @var Collection
      */
     protected $items;
