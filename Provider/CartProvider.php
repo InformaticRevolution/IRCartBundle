@@ -63,7 +63,7 @@ class CartProvider implements CartProviderInterface
             return $this->cart = $cart;
         }
 
-        $this->cartManager->createCart();
+        $cart = $this->cartManager->createCart();
         $this->storage->setCart($cart);
                 
         return $this->cart = $cart;
