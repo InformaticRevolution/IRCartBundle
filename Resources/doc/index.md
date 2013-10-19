@@ -260,6 +260,7 @@ In XML:
 ir_cart:
     db_driver: orm # orm is the only available driver for the moment 
     cart_class: Acme\CartBundle\Entity\Cart
+    cart_item_class: Acme\CartBundle\Entity\CartItem
 ```
 
 **b) Add the CartInterface path to the RTEL**
