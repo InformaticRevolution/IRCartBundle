@@ -1,0 +1,5 @@
+ir_cart:
+    cart_item:
+        quantity:
+            not_blank: Veuillez saisir une quantité
+            min_range: La quantité doit être supérieure ou égale à {{ value }}

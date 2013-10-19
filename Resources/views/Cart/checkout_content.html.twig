@@ -1,0 +1,53 @@
+{% trans_default_domain 'ir_cart' %}
+
+<div class="page-header">
+    <h1>{{ 'cart.checkout.title'|trans }}</h1>
+</div>
+
+{% if not cart.empty %}
+<form action="{{ path('ir_cart_checkout') }}" {{ form_enctype(form) }} method="POST" novalidate>
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>  
+                <th>{{ 'cart_item.quantity'|trans }}</th> 
+                <th>{{ 'cart_item.price'|trans }}</th> 
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in cart.items %}
+            <tr>
+                <td>
+                    <a href="{{ path('ir_cart_item_remove', {'id': item.id}) }}">Supprimer</a>
+                </td>
+                <td>
+                    {{ form_row(form.items[loop.index0].quantity, {'label': false}) }}
+                </td>
+                <td>{{ item.unitPrice }}</td>
+                <td>{{ item.total }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="pull-right">
+                    <strong>Total :</strong> {{ cart.total }}
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+        
+    {{ form_rest(form) }}
+        
+    <div class="panel panel-default">
+        <div class="panel-body pull-right">
+            <button type="submit" class="btn btn-primary">{{ 'checkout.action.save'|trans }}</button>
+            <a href="{{ path('ir_cart_clear') }}">Vider</a>
+        </div>
+    </div>
+</form>
+{% else %}
+<div class="well">
+    {{ 'cart.checkout.no_results'|trans }}
+</div>
+{% endif %}

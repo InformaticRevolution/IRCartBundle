@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/3.0.0/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <div class="container">
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ type }}">
+                        {{ message }}
+                        <a class="close" data-dismiss="alert" href="#">&times;</a>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+                
+            <div>
+                {% block ir_cart_content %}
+                {% endblock ir_cart_content %}
+            </div>
+        </div>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/twitter-bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    </body>
+</html>

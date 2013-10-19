@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping 
+                                        http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="IR\Bundle\CartBundle\Model\Cart">
+        <property name="items">
+            <constraint name="Valid" />
+        </property>        
+    </class>
+
+    <class name="IR\Bundle\CartBundle\Model\CartItem">
+        <property name="quantity">
+            <constraint name="NotBlank">
+                <option name="message">ir_cart.cart_item.quantity.not_blank</option>
+                <option name="groups">CartItem</option>               
+            </constraint>           
+            <constraint name="Range">
+                <option name="min">1</option>
+                <option name="minMessage">ir_cart.cart_item.quantity.min_range</option>
+                <option name="groups">CartItem</option>                 
+            </constraint>
+        </property>
+    </class> 
+
+</constraint-mapping>        

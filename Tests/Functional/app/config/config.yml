@@ -1,0 +1,36 @@
+framework:
+    secret: test
+    test: ~
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }    
+    templating:
+        engines: ['twig', 'php']   
+    session:
+        storage_id: session.storage.mock_file
+     
+# Twig Configuration        
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%        
+        
+# Doctrine Configuration        
+doctrine:
+    dbal:
+        driver: pdo_sqlite
+        path: %kernel.cache_dir%/database.db
+        
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        auto_mapping: true 
+      
+        resolve_target_entities:
+            IR\Bundle\CartBundle\Model\CartInterface: IR\Bundle\CartBundle\Tests\Functional\Bundle\TestBundle\Entity\Cart  
+         
+# IRCart Configuration            
+ir_cart:
+    db_driver: orm 
+    cart_class: IR\Bundle\CartBundle\Tests\Functional\Bundle\TestBundle\Entity\Cart  
+    cart_item_class: IR\Bundle\CartBundle\Tests\Functional\Bundle\TestBundle\Entity\CartItem

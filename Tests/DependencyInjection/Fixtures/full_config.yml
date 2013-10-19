@@ -1,0 +1,18 @@
+db_driver: orm
+cart_class: Acme\CartBundle\Entity\Cart
+cart_item_class: Acme\CartBundle\Entity\CartItem
+cart_manager: acme_cart.manager.cart
+cart_item_manager: acme_cart.manager.cart_item
+cart:
+    form:
+        type: acme_cart
+        name: acme_cart_form 
+cart_item:
+    form:
+        type: acme_cart_item
+        name: acme_cart_item_form             
+service:
+    cart_storage: acme_cart.storage.cart
+    cart_provider: acme_cart.provider.cart    
+template:
+    engine: php

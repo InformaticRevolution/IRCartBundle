@@ -1,0 +1,3 @@
+db_driver: orm
+cart_class: Acme\CartBundle\Entity\Cart
+cart_item_class: Acme\CartBundle\Entity\CartItem  

@@ -1,0 +1,4 @@
+# Form field labels
+form:  
+    cart_item:
+        quantity : "Quantity:"

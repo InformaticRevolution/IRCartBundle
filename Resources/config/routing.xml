@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing 
+                            http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="ir_cart_checkout" pattern="/checkout">
+        <default key="_controller">IRCartBundle:Cart:checkout</default>
+    </route>
+    
+    <route id="ir_cart_clear" pattern="/clear" methods="GET">
+        <default key="_controller">IRCartBundle:Cart:clear</default>
+    </route>      
+    
+    <route id="ir_cart_item_add" pattern="/add" methods="GET">
+        <default key="_controller">IRCartBundle:CartItem:add</default>
+    </route>   
+    
+    <route id="ir_cart_item_remove" pattern="/{id}/remove" methods="GET">
+        <default key="_controller">IRCartBundle:CartItem:remove</default>
+    </route>                               
+</routes>

@@ -1,0 +1,8 @@
+IR\Bundle\CartBundle\Tests\Functional\Bundle\TestBundle\Entity\Cart:
+    cart:
+        items: ['@item1', '@item2', '@item3']
+        
+IR\Bundle\CartBundle\Tests\Functional\Bundle\TestBundle\Entity\CartItem:
+    item{1..3}:
+        quantity: <randomNumber(1,9)>
+        unitPrice: <randomFloat(2, 0, 300)>

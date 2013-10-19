@@ -1,0 +1,2 @@
+ir_cart:
+    resource: "@IRCartBundle/Resources/config/routing.xml"
