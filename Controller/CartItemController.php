@@ -40,6 +40,7 @@ class CartItemController extends ContainerAware
         
         $cart->addItem($item);
         $this->container->get('ir_cart.manager.cart')->updateCart($cart);
+        $this->cartProvider->setCart($cart);
         
         $dispatcher->dispatch(IRCartEvents::CART_ITEM_ADD_COMPLETED, new CartItemEvent($item));           
         
